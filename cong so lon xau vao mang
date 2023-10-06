@@ -1,0 +1,29 @@
+USES CRT;
+ Procedure cong;
+ Var    s1,s2:String; a,b,i,L1,L2,code:word; max:longint;
+          c:Array[0..255] of  byte;
+ Begin
+     Write('Nhap so thu nhat'); Readln(s1);
+     Write('Nhap so thu hai');  Readln(s2);
+      L1:=length(s1); L2:=length(s2);
+          if L1>L2 Then Max:=L1 Else Max:=L2;
+      For i:=L2+1 to Max do s2:='0'+s2;
+      For i:=L1+1 to Max do  s1:='0'+s1;
+      For i:=0 to 255 do C[i]:=0;
+     For i:=0 to Max do
+            Begin
+       val(s1[i],A,code);
+      val(s2[i],B,code);
+       c[i]:=a+b;
+           End;
+   For i:=Max downto 1 do
+     Begin
+         c[i-1]:=c[i-1] + c[i] Div 10;
+          c[i]:=c[i] Mod 10;
+         End;
+ For i:=0 to Max do Write(c[i]);
+ End;
+BEGIN
+ cong;
+ readln;
+END.
