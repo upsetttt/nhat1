@@ -1,0 +1,43 @@
+program tru_so_lon;
+ var st1,st2:string;
+ Procedure tru(s1,s2:string);
+     Var   s:String;
+        h1,h2:Array[1..255] of  byte;
+        C:Array[1..255] of  byte;
+        dau:Char;
+  code,l1,l2,Max,i:word;
+ Begin
+  L1:=length(s1);
+ L2:=length(s2);
+if L1>L2 Then Max:=L1 Else Max:=L2;
+ For i:=L2+1 to Max do s2:='0'+s2;
+ For i:=L1+1 to Max do s1:='0'+s1;
+dau:=' ';
+IF s2>s1 Then
+   Begin
+    dau:='-';  s:=s2;  s2:=s1;  s1:=s;
+      End;
+           For i:=1 to 255 do C[i]:=0;
+ For i:=1 to Max do
+Begin
+ val(s1[i],h1[i],code);
+ val(s2[i],h2[i],code);
+ End;
+ For i:=Max downto 1 do
+      IF h1[i]<h2[i] Then
+                       Begin
+                               c[i]:=h1[i]+10-h2[i];
+                 h2[i-1]:=h2[i-1]+1;
+                                  End  Else
+                              c[i]:=h1[i]-h2[i];
+
+Write(dau);
+For i:=1 to Max do Write(c[i]);
+End;
+Begin
+write('nhap so thu nhat'); readln(st1);
+  write('nhap so thu nhat'); readln(st2);
+  writeln('ket qua la');
+  tru(st1,st2);
+Readln;
+End.
