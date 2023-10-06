@@ -1,0 +1,31 @@
+Program so_lon;
+ var
+  st,st1,st2:string;
+ Function Cong(s1,s2:String):String;
+Var
+    L1,L2,Max,i,tam,a,b,code,nho:Integer;
+    h,h1:String;
+Begin
+ L1:=length(s1);
+ L2:=length(s2);
+if L1>L2 Then Max:=L1 Else Max:=L2;
+ For i:=L1+1 to Max do s1:='0'+s1;
+For i:=L2+1 to Max do s2:='0'+s2;
+nho:=0; h:='';
+For i:=Max downto 1 do
+   Begin
+       val(s1[i],a,code);
+       val(s2[i],b,code);
+       tam:=a+b+nho;
+if tam>=10 Then nho:=1  Else nho:=0;
+  str(tam Mod 10,h1);
+h:=h1+h; End;
+if nho=1 Then h:='1'+h;
+cong:=h;
+ End;
+ Begin
+  write('nhap so thu nhat'); readln(st1);
+  write('nhap so thu hai'); readln(st2);
+  writeln('ket qua la', cong(st1,st2));
+  readln;
+ End.          
